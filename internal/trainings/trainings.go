@@ -53,7 +53,7 @@ func (t *Training) Parse(datastring string) (err error) {
 }
 
 func (t Training) ActionInfo() (string, error) {
-	distanse := spentenergy.Distance(t.Steps, t.Height)
+	distanсe := spentenergy.Distance(t.Steps, t.Height)
 	meanSpeed := spentenergy.MeanSpeed(t.Steps, t.Height, t.Duration)
 
 	var calories float64
@@ -82,7 +82,7 @@ func (t Training) ActionInfo() (string, error) {
 			"Сожгли калорий: %.2f\n",
 		t.TrainingType,
 		durationHours,
-		distanse,
+		distanсe,
 		meanSpeed,
 		calories,
 	)
