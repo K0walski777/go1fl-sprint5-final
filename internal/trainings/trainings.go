@@ -10,6 +10,7 @@ import (
 	"github.com/Yandex-Practicum/tracker/internal/spentenergy"
 )
 
+// Структура содержит информацию об тренировочной активности пользователя
 type Training struct {
 	Steps        int
 	TrainingType string
@@ -17,6 +18,8 @@ type Training struct {
 	personaldata.Personal
 }
 
+// Парсинг входящей строки (например "3456,Ходьба,3h00m") и запись результатов в поля структуры Training.
+// Возвращает ошибку, если формат входной строки не валидный.
 func (t *Training) Parse(datastring string) (err error) {
 	sliceForDatastr := strings.Split(datastring, ",")
 
@@ -52,6 +55,8 @@ func (t *Training) Parse(datastring string) (err error) {
 	return err
 }
 
+// Метод расчитывает показатели активности (дистанцию, скорость, калории)
+// и формирует строку с отчетом об тренировки в зависимости от типа тренировки
 func (t Training) ActionInfo() (string, error) {
 	distanсe := spentenergy.Distance(t.Steps, t.Height)
 	meanSpeed := spentenergy.MeanSpeed(t.Steps, t.Height, t.Duration)
@@ -59,6 +64,7 @@ func (t Training) ActionInfo() (string, error) {
 	var calories float64
 	var err error
 
+	// Выбор формулы расчета калорий в зависимости от типа тренировки
 	switch t.TrainingType {
 	case "Ходьба":
 		calories, err = spentenergy.WalkingSpentCalories(t.Steps, t.Weight, t.Height, t.Duration)
