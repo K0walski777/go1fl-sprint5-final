@@ -10,12 +10,16 @@ import (
 	"github.com/Yandex-Practicum/tracker/internal/spentenergy"
 )
 
+// Структура описывает повседневную активность пользователя.
+// Наследует данные пользователя из Personal
 type DaySteps struct {
 	Steps    int
 	Duration time.Duration
 	personaldata.Personal
 }
 
+// Парсинг входящей строки (например "678,0h50m") и запись результатов в поля структуры DaySteps.
+// Возвращает ошибку, если формат входной строки не валидный.
 func (ds *DaySteps) Parse(datastring string) (err error) {
 	sliceForDatastr := strings.Split(datastring, ",")
 
@@ -48,6 +52,7 @@ func (ds *DaySteps) Parse(datastring string) (err error) {
 	return err
 }
 
+// Метод считает пройденное растояние и потраченые каллории, затем возвращает отчет об активности
 func (ds DaySteps) ActionInfo() (string, error) {
 	var err error
 
