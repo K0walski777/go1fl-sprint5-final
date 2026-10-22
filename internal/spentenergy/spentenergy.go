@@ -18,6 +18,7 @@ var (
 	ErrNonPositiveTime = errors.New("Продолжительность должна быть больше нуля")
 )
 
+// Расчет калорий, потраченых при ходьбе
 func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	if steps <= 0 {
 		return 0, ErrNegativeSteps
@@ -43,6 +44,7 @@ func WalkingSpentCalories(steps int, weight, height float64, duration time.Durat
 	return calories * walkingCaloriesCoefficient, nil
 }
 
+// Расчет калорий, потраченых при беге
 func RunningSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	if steps <= 0 {
 		return 0, ErrNegativeSteps
@@ -68,6 +70,7 @@ func RunningSpentCalories(steps int, weight, height float64, duration time.Durat
 	return calories, nil
 }
 
+// Расчет средней скорости в км/ч
 func MeanSpeed(steps int, height float64, duration time.Duration) float64 {
 	if duration <= 0 || steps < 0 || height <= 0 {
 		return 0
@@ -79,6 +82,7 @@ func MeanSpeed(steps int, height float64, duration time.Duration) float64 {
 
 }
 
+// Расчет дистанции в км. на основе шагов и роста
 func Distance(steps int, height float64) float64 {
 	if steps < 0 || height <= 0 {
 		return 0
