@@ -24,16 +24,16 @@ func (t *Training) Parse(datastring string) (err error) {
 	sliceForDatastr := strings.Split(datastring, ",")
 
 	if len(sliceForDatastr) != 3 {
-		return fmt.Errorf("Строка слишком короткая для парсинга")
+		return fmt.Errorf("строка слишком короткая для парсинга")
 	}
 
 	steps, err := strconv.Atoi(sliceForDatastr[0])
 	if err != nil {
-		return fmt.Errorf("Возникла ошибка преобразования шагов: %w", err)
+		return fmt.Errorf("возникла ошибка преобразования шагов: %w", err)
 	}
 
 	if steps <= 0 {
-		return fmt.Errorf("Кол-во шагов должно быть больше нуля")
+		return fmt.Errorf("кол-во шагов должно быть больше нуля")
 	}
 
 	t.Steps = steps
@@ -43,11 +43,11 @@ func (t *Training) Parse(datastring string) (err error) {
 
 	duration, err := time.ParseDuration(sliceForDatastr[2])
 	if err != nil {
-		return fmt.Errorf("Возникла ошибка преобразования длительности тренировки: %w", err)
+		return fmt.Errorf("возникла ошибка преобразования длительности тренировки: %w", err)
 	}
 
 	if duration <= 0 {
-		return fmt.Errorf("Продолжительность тренировки должна быть больше нуля")
+		return fmt.Errorf("продолжительность тренировки должна быть больше нуля")
 	}
 
 	t.Duration = duration

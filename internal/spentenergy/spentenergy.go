@@ -14,8 +14,8 @@ const (
 )
 
 var (
-	ErrNegativeSteps   = errors.New("Количество шагов не может быть отрицательным")
-	ErrNonPositiveTime = errors.New("Продолжительность должна быть больше нуля")
+	ErrNegativeSteps   = errors.New("количество шагов не может быть отрицательным")
+	ErrNonPositiveTime = errors.New("продолжительность должна быть больше нуля")
 )
 
 // Расчет калорий, потраченых при ходьбе
@@ -25,11 +25,11 @@ func WalkingSpentCalories(steps int, weight, height float64, duration time.Durat
 	}
 
 	if weight <= 0 {
-		return 0, errors.New("Вес должен быть больше нуля")
+		return 0, errors.New("вес должен быть больше нуля")
 	}
 
 	if height <= 0 {
-		return 0, errors.New("Рост должен быть больше нуля")
+		return 0, errors.New("рост должен быть больше нуля")
 	}
 
 	if duration <= 0 {
@@ -51,11 +51,11 @@ func RunningSpentCalories(steps int, weight, height float64, duration time.Durat
 	}
 
 	if weight <= 0 {
-		return 0, errors.New("Вес должен быть больше нуля")
+		return 0, errors.New("вес должен быть больше нуля")
 	}
 
 	if height <= 0 {
-		return 0, errors.New("Рост должен быть больше нуля")
+		return 0, errors.New("рост должен быть больше нуля")
 	}
 
 	if duration <= 0 {
